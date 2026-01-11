@@ -26,6 +26,8 @@ apps/expo/android
 
 # production
 build
+# but keep expo plugins build (needed for EAS Build)
+!apps/expo/plugins/build/
 
 # misc
 .DS_Store

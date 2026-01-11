@@ -12,9 +12,10 @@ export function initAuth<
   baseUrl: string;
   productionUrl: string;
   secret: string | undefined;
-
-  discordClientId: string;
-  discordClientSecret: string;
+  googleClientId?: string;
+  googleClientSecret?: string;
+  appleClientId?: string;
+  appleClientSecret?: string;
   extraPlugins?: TExtraPlugins;
 }) {
   const config = {
@@ -23,6 +24,22 @@ export function initAuth<
     }),
     baseURL: options.baseUrl,
     secret: options.secret,
+    socialProviders: {
+      google:
+        options.googleClientId && options.googleClientSecret
+          ? {
+              clientId: options.googleClientId,
+              clientSecret: options.googleClientSecret,
+            }
+          : undefined,
+      apple:
+        options.appleClientId && options.appleClientSecret
+          ? {
+              clientId: options.appleClientId,
+              clientSecret: options.appleClientSecret,
+            }
+          : undefined,
+    },
     plugins: [
       oAuthProxy({
         productionURL: options.productionUrl,
@@ -30,13 +47,6 @@ export function initAuth<
       expo(),
       ...(options.extraPlugins ?? []),
     ],
-    socialProviders: {
-      discord: {
-        clientId: options.discordClientId,
-        clientSecret: options.discordClientSecret,
-        redirectURI: `${options.productionUrl}/api/auth/callback/discord`,
-      },
-    },
     trustedOrigins: ["expo://"],
     onAPIError: {
       onError(error, ctx) {

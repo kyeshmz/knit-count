@@ -10,18 +10,22 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test:ai": "tsx test-ai-parser.ts",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint --flag unstable_native_nodejs_ts_config",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
+    "@hono/trpc-server": "^0.4.1",
     "@trpc/server": "catalog:",
+    "hono": "^4.11.3",
+    "openai": "^6.15.0",
     "superjson": "2.2.3",
     "zod": "catalog:"
   },
@@ -29,9 +33,13 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@cloudflare/workers-types": "^4.20251225.0",
+    "dotenv": "^17.2.3",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "typescript": "catalog:"
+    "tsx": "^4.21.0",
+    "typescript": "catalog:",
+    "wrangler": "^4.54.0"
   },
   "prettier": "@acme/prettier-config"
 }

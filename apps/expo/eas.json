@@ -5,16 +5,27 @@
   },
   "build": {
     "base": {
-      "node": "22.12.0",
-      "pnpm": "9.15.4",
+      "node": "22.14.0",
+      "pnpm": "10.19.0",
       "ios": {
-        "resourceClass": "m-medium"
+        "resourceClass": "m-medium",
+        "prebuildCommand": "npx tsx scripts/copy-live-activity-templates.ts"
       }
     },
     "development": {
       "extends": "base",
       "developmentClient": true,
       "distribution": "internal"
+    },
+    "development-simulator": {
+      "extends": "base",
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "EXPO_NO_DOCTOR": "1"
+      }
     },
     "preview": {
       "extends": "base",

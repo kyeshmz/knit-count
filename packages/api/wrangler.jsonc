@@ -1,0 +1,30 @@
+{
+  "name": "knitcount-api",
+  "main": "src/worker.ts",
+  "compatibility_date": "2024-12-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "knitcount",
+      "database_id": "c20cca16-0a2b-483b-8ecd-68b6f66afec4",
+    },
+  ],
+  "vars": {
+    "NODE_ENV": "production",
+  },
+  "env": {
+    "dev": {
+      "vars": {
+        "NODE_ENV": "development",
+      },
+    },
+  },
+  "routes": [
+    {
+      "pattern": "knitcount.kyeshimizu.com",
+      "custom_domain": true,
+      "zone_id": "67c2497e113e47c6961cd67e589e856b",
+    },
+  ],
+}
