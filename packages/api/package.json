@@ -22,7 +22,7 @@
   "dependencies": {
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@hono/trpc-server": "^0.4.1",
+    "@hono/trpc-server": "^0.4.2",
     "@trpc/server": "catalog:",
     "hono": "^4.11.3",
     "openai": "^6.15.0",
