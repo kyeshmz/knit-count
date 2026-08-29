@@ -71,7 +71,7 @@
     "@acme/tsconfig": "workspace:*",
     "@expo/config-plugins": "~54.0.4",
     "@types/react": "catalog:react19",
-    "drizzle-kit": "^0.31.5",
+    "drizzle-kit": "^0.31.10",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "tailwindcss": "~3.4.17",
